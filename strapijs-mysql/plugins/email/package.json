@@ -1,16 +1,16 @@
 {
-  "_from": "strapi-plugin-users-permissions@3.0.0-alpha.24.1",
-  "_id": "strapi-plugin-users-permissions@3.0.0-alpha.24.1",
+  "_from": "strapi-plugin-email@3.0.0-alpha.24.1",
+  "_id": "strapi-plugin-email@3.0.0-alpha.24.1",
   "_inBundle": false,
-  "_integrity": "sha512-YiVMv4QMFf+5lAkFiOPwbmBCW6ICf4vCat2oCwuuYL50hGdiB970aeR01r+p5eIMYWejaF5vC3nvf9JP+2cwYg==",
-  "_location": "/strapi-plugin-users-permissions",
+  "_integrity": "sha512-d7SJl6EwyaOEvrwRHyZISl20MsH8uMvz1BfuKMX9dWnyNHRJxZhkbAacA5UA0wFdR6lmfWmd4/VnW6LSgXGgHw==",
+  "_location": "/strapi-plugin-email",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-users-permissions@3.0.0-alpha.24.1",
-    "name": "strapi-plugin-users-permissions",
-    "escapedName": "strapi-plugin-users-permissions",
+    "raw": "strapi-plugin-email@3.0.0-alpha.24.1",
+    "name": "strapi-plugin-email",
+    "escapedName": "strapi-plugin-email",
     "rawSpec": "3.0.0-alpha.24.1",
     "saveSpec": null,
     "fetchSpec": "3.0.0-alpha.24.1"
@@ -18,10 +18,10 @@
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-alpha.24.1.tgz",
-  "_shasum": "a41ae8c6f93af58f0fec2afcd63a49861906d776",
-  "_spec": "strapi-plugin-users-permissions@3.0.0-alpha.24.1",
-  "_where": "/Users/develop/Downloads/GITHUB/cms/strapijs",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-email/-/strapi-plugin-email-3.0.0-alpha.24.1.tgz",
+  "_shasum": "0d774504c8a2a205c27edc2d79a7d41311028cef",
+  "_spec": "strapi-plugin-email@3.0.0-alpha.24.1",
+  "_where": "/Users/develop/Downloads/GITHUB/cms/strapijs-mysql",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -32,19 +32,13 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "grant-koa": "^4.2.0",
-    "jsonwebtoken": "^8.1.0",
-    "koa": "^2.1.0",
-    "koa2-ratelimit": "^0.6.1",
-    "purest": "^2.0.1",
-    "request": "^2.83.0",
-    "strapi-utils": "3.0.0-alpha.24.1",
-    "uuid": "^3.1.0"
+    "strapi-provider-email-sendmail": "3.0.0-alpha.24.1"
   },
   "deprecated": false,
-  "description": "Protect your API with a full-authentication process based on JWT",
+  "description": "This is the description of the plugin.",
   "devDependencies": {
+    "react-copy-to-clipboard": "5.0.1",
+    "rimraf": "^2.6.3",
     "strapi-helper-plugin": "3.0.0-alpha.24.1"
   },
   "engines": {
@@ -60,7 +54,7 @@
       "url": "http://strapi.io"
     }
   ],
-  "name": "strapi-plugin-users-permissions",
+  "name": "strapi-plugin-email",
   "repository": {
     "type": "git",
     "url": "git://github.com/strapi/strapi.git"
@@ -80,9 +74,9 @@
     "test": "echo \"Error: no test specified\""
   },
   "strapi": {
-    "name": "Roles & Permissions",
-    "icon": "users",
-    "description": "users-permissions.plugin.description"
+    "name": "Email",
+    "icon": "paper-plane",
+    "description": "email.plugin.description"
   },
   "version": "3.0.0-alpha.24.1"
 }
