@@ -1,0 +1,54 @@
+{
+  "connection": "default",
+  "collectionName": "drafts",
+  "info": {
+    "name": "draft",
+    "description": "add api for custom something"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "extra": {
+      "default": "",
+      "type": "string"
+    },
+    "event": {
+      "default": "",
+      "type": "enumeration",
+      "enum": [
+        "morning",
+        "evening",
+        "night"
+      ]
+    },
+    "age": {
+      "default": "",
+      "type": "integer"
+    },
+    "birth": {
+      "default": "",
+      "type": "date"
+    },
+    "files": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "content": {
+      "default": "",
+      "type": "text"
+    },
+    "valid": {
+      "default": false,
+      "type": "boolean"
+    },
+    "meta": {
+      "default": "",
+      "type": "json"
+    }
+  }
+}
