@@ -1,0 +1,353 @@
+input createDraftInput {
+  data: DraftInput
+}
+
+type createDraftPayload {
+  draft: Draft
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createTemporaryInput {
+  data: TemporaryInput
+}
+
+type createTemporaryPayload {
+  temporary: Temporary
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+The `DateTime` scalar represents a date and time following the ISO 8601 standard
+"""
+scalar DateTime
+
+input deleteDraftInput {
+  where: InputID
+}
+
+type deleteDraftPayload {
+  draft: Draft
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteTemporaryInput {
+  where: InputID
+}
+
+type deleteTemporaryPayload {
+  temporary: Temporary
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""add api for custom something"""
+type Draft {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  extra: String
+  event: ENUM_DRAFT_EVENT
+  age: Int
+  birth: DateTime
+  content: String
+  valid: Boolean
+  meta: JSON
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input DraftInput {
+  extra: String
+  event: ENUM_DRAFT_EVENT
+  age: Int
+  birth: DateTime
+  files: [ID]
+  content: String
+  valid: Boolean
+  meta: JSON
+}
+
+input editDraftInput {
+  extra: String
+  event: ENUM_DRAFT_EVENT
+  age: Int
+  birth: DateTime
+  files: [ID]
+  content: String
+  valid: Boolean
+  meta: JSON
+}
+
+input editFileInput {
+  name: String
+  hash: String
+  sha256: String
+  ext: String
+  mime: String
+  size: String
+  url: String
+  provider: String
+  public_id: String
+  related: [ID]
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editTemporaryInput {
+  content: String
+  name: String
+  boom: String
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+enum ENUM_DRAFT_EVENT {
+  morning
+  evening
+  night
+}
+
+input FileInput {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
+  public_id: String
+  related: [ID]
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Draft | createDraftPayload | updateDraftPayload | deleteDraftPayload | Temporary | createTemporaryPayload | updateTemporaryPayload | deleteTemporaryPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+
+type Mutation {
+  createDraft(input: createDraftInput): createDraftPayload
+  updateDraft(input: updateDraftInput): updateDraftPayload
+  deleteDraft(input: deleteDraftInput): deleteDraftPayload
+  createTemporary(input: createTemporaryInput): createTemporaryPayload
+  updateTemporary(input: updateTemporaryInput): updateTemporaryPayload
+  deleteTemporary(input: deleteTemporaryInput): deleteTemporaryPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
+}
+
+type Query {
+  draft(id: ID!): Draft
+  drafts(sort: String, limit: Int, start: Int, where: JSON): [Draft]
+  temporary(id: ID!): Temporary
+  temporaries(sort: String, limit: Int, start: Int, where: JSON): [Temporary]
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+"""temporary file"""
+type Temporary {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  content: String
+  name: String
+  boom: String
+}
+
+input TemporaryInput {
+  content: String
+  name: String
+  boom: String
+}
+
+input updateDraftInput {
+  where: InputID
+  data: editDraftInput
+}
+
+type updateDraftPayload {
+  draft: Draft
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateTemporaryInput {
+  where: InputID
+  data: editTemporaryInput
+}
+
+type updateTemporaryPayload {
+  temporary: Temporary
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
+  public_id: String
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+type UsersPermissionsMe {
+  _id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  _id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+}
