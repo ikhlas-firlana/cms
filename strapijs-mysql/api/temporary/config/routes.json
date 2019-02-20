@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/temporaries",
+      "handler": "Temporary.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/temporaries/count",
+      "handler": "Temporary.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/temporaries/:id",
+      "handler": "Temporary.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/temporaries",
+      "handler": "Temporary.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/temporaries/:id",
+      "handler": "Temporary.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/temporaries/:id",
+      "handler": "Temporary.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "temporaries",
+  "info": {
+    "name": "temporary",
+    "description": "temporary file"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "content": {
+      "default": "",
+      "type": "text"
+    },
+    "name": {
+      "default": "",
+      "type": "string"
+    },
+    "boom": {
+      "default": "",
+      "type": "email"
+    }
+  }
+}
